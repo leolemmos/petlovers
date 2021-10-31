@@ -1,0 +1,16 @@
+name: petlovers_ui
+description: Package responsible for the atomic design of the application.
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0-0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  fonts:
+    - family: Montez
+      fonts:
+        - asset: fonts/Montez-Regular.ttf
