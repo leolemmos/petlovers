@@ -14,3 +14,7 @@ flutter:
     - family: Montez
       fonts:
         - asset: fonts/Montez-Regular.ttf
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Regular.otf
+        
