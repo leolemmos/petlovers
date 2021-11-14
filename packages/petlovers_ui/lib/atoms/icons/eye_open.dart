@@ -1,10 +1,11 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 class EyeOpenIcon extends StatelessWidget {
-  const EyeOpenIcon({required this.size, this.color});
   final Size size;
   final Color? color;
+  const EyeOpenIcon({required this.size, this.color});
   @override
   build(_) => CustomPaint(
       size: size,
@@ -14,8 +15,8 @@ class EyeOpenIcon extends StatelessWidget {
 }
 
 class _EyeOpenPainter extends CustomPainter {
-  const _EyeOpenPainter([this.color]);
   final Color? color;
+  const _EyeOpenPainter([this.color]);
 
   @override
   paint(canvas, size) {

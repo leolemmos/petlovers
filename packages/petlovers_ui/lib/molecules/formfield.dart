@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import '../atoms/@atoms.dart';
-import '../theme/petlovers.theme.dart';
+
 import '../@enums/formfield.enum.dart';
+import '../@theme/petlovers.theme.dart';
+import '../@atoms.dart';
+
 export '../@enums/formfield.enum.dart';
 
 class FormFieldComponent extends StatelessWidget {
@@ -10,6 +12,19 @@ class FormFieldComponent extends StatelessWidget {
   final String? hintText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+
+  const FormFieldComponent({
+    required this.type,
+    this.errorText,
+    this.hintText,
+    this.controller,
+    this.validator,
+  });
+
+  double get bottomPadding =>
+      8 /* subtextGap */ +
+      (PetLoversTheme.theme.inputDecorationTheme.errorStyle!.height! *
+          PetLoversTheme.theme.inputDecorationTheme.errorStyle!.fontSize!);
 
   @override
   build(_) => Theme(
@@ -47,17 +62,4 @@ class FormFieldComponent extends StatelessWidget {
           }
         }),
       );
-
-  double get bottomPadding =>
-      8 /* subtextGap */ +
-      (PetLoversTheme.theme.inputDecorationTheme.errorStyle!.height! *
-          PetLoversTheme.theme.inputDecorationTheme.errorStyle!.fontSize!);
-
-  const FormFieldComponent({
-    required this.type,
-    this.errorText,
-    this.hintText,
-    this.controller,
-    this.validator,
-  });
 }

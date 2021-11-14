@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import '@atoms.dart' show EyeCloseIcon, EyeOpenIcon;
+
+import '../@atoms.dart' show EyeCloseIcon, EyeOpenIcon;
 
 class SecretFormField extends StatefulWidget {
+  final String? errorText;
+  final String? hintText;
+  final TextInputType? keyboardType;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
   const SecretFormField({
     this.errorText,
     this.hintText,
@@ -9,11 +15,6 @@ class SecretFormField extends StatefulWidget {
     this.validator,
     this.keyboardType,
   });
-  final String? errorText;
-  final String? hintText;
-  final TextInputType? keyboardType;
-  final TextEditingController? controller;
-  final String? Function(String?)? validator;
   @override
   createState() => _SecretFormFieldState();
 }
@@ -41,10 +42,10 @@ class _SecretFormFieldState extends State<SecretFormField> {
         ),
       );
 
-  void _toggleHidePassword() => setState(() => _hidePassword = !_hidePassword);
   Widget _suffixIcon(Size size, Color color) => Padding(
       child: _hidePassword
           ? EyeOpenIcon(size: size, color: color)
           : EyeCloseIcon(size: size, color: color),
       padding: EdgeInsets.only(right: 12));
+  void _toggleHidePassword() => setState(() => _hidePassword = !_hidePassword);
 }

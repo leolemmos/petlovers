@@ -1,24 +1,72 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '../utils.dart';
 
-class FormWrapperWidget extends StatelessWidget with KeyboardMixin {
-  const FormWrapperWidget({this.formKey, required this.children});
-  final GlobalKey<FormState>? formKey;
-  final List<Widget> children;
+import '../@atoms.dart' show PetLoversButton;
+import '../@molecules.dart'
+    show FormFieldComponent, FormFieldType, FormWrapperComponent;
+import '../@theme/petlovers.theme.dart' show PetLoversTheme;
+
+class LoginFormWidget extends StatelessWidget {
+  final GlobalKey<FormState> formKey;
+  final TextEditingController userInputController;
+  final String? Function(String?)? userInputValidator;
+  final TextEditingController secretInputController;
+  final String? Function(String?)? secretInputValidator;
+  final VoidCallback onLoginSubmit;
+  final VoidCallback onTapRecoverSecret;
+  final VoidCallback onTapRegister;
+
+  const LoginFormWidget({
+    required this.formKey,
+    required this.onLoginSubmit,
+    required this.onTapRecoverSecret,
+    required this.onTapRegister,
+    required this.userInputController,
+    required this.userInputValidator,
+    required this.secretInputController,
+    required this.secretInputValidator,
+  });
 
   @override
-  build(_) => Form(
-      key: formKey,
-      child: Padding(
-        padding: EdgeInsets.only(
-          bottom: isKeyboardActive(_) ? MediaQuery.of(_).viewInsets.bottom : 0,
+  build(_) => FormWrapperComponent(formKey: formKey, children: [
+        FormFieldComponent(
+          controller: userInputController,
+          validator: userInputValidator,
+          type: FormFieldType.text,
+          hintText: 'Nome de Usuário',
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: List.generate(
-            children.length,
-            (i) => Padding(padding: EdgeInsets.all(8), child: children[i]),
+        FormFieldComponent(
+          controller: secretInputController,
+          validator: secretInputValidator,
+          type: FormFieldType.secret,
+          hintText: 'Senha',
+        ),
+        Text.rich(
+          TextSpan(
+            text: 'Esqueceu a senha?',
+            recognizer: TapGestureRecognizer()..onTap = () {},
+            style: PetLoversTheme.theme.primaryTextTheme.bodyText1!
+                .copyWith(color: Colors.amber[700]),
           ),
+          textAlign: TextAlign.right,
         ),
-      ));
+        PetLoversButton(text: 'Login', action: onLoginSubmit),
+        Text.rich(
+          TextSpan(
+            text: 'Não possui uma conta? ',
+            style: PetLoversTheme.theme.primaryTextTheme.bodyText2,
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Registre-se',
+                recognizer: TapGestureRecognizer()..onTap = onTapRegister,
+                style: (PetLoversTheme.theme.primaryTextTheme.bodyText1)!
+                    .copyWith(
+                        color: Colors.amber[700],
+                        decoration: TextDecoration.underline),
+              )
+            ],
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ]);
 }

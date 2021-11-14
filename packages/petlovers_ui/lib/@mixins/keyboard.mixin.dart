@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 mixin KeyboardMixin {
   bool isKeyboardActive(BuildContext context) =>

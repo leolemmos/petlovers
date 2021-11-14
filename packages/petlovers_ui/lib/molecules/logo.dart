@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../atoms/@atoms.dart';
+
+import '../@atoms.dart';
 
 class LogoComponent extends StatelessWidget {
   final double size;

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ListPageTemplate extends StatelessWidget {
+class ListScreenTemplate extends StatelessWidget {
   final List<Widget> children;
   final Text? footer;
   final bool isKeyboardActive;
+
+  const ListScreenTemplate({
+    this.footer,
+    required this.children,
+    this.isKeyboardActive = false,
+  });
 
   @override
   build(_) => Material(
@@ -24,10 +30,4 @@ class ListPageTemplate extends StatelessWidget {
             Visibility(visible: !isKeyboardActive, child: footer!),
         ]),
       );
-
-  const ListPageTemplate({
-    this.footer,
-    required this.children,
-    this.isKeyboardActive = false,
-  });
 }

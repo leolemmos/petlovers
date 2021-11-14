@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 abstract class PetLoversTheme {
-  PetLoversTheme._();
-
   static ThemeData get theme => ThemeData(
         fontFamily: 'Poppins',
         primaryColor: Colors.pink,
@@ -14,10 +12,6 @@ abstract class PetLoversTheme {
             minimumSize: Size.square(kToolbarHeight),
             maximumSize: Size(kToolbarHeight * 4, kToolbarHeight),
             shape: RoundedRectangleBorder(borderRadius: _br),
-            textStyle: _textStyle.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-            ),
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
@@ -47,6 +41,7 @@ abstract class PetLoversTheme {
             color: Colors.indigo[900],
             fontWeight: FontWeight.w600,
           ),
+          button: _textStyle.copyWith(fontWeight: FontWeight.w600),
           bodyText1: _textStyle.copyWith(
             fontSize: 14,
             fontWeight: FontWeight.w600,
@@ -54,13 +49,15 @@ abstract class PetLoversTheme {
           bodyText2: _textStyle.copyWith(fontSize: 14),
         ),
       );
+
+  static OutlineInputBorder get _border => OutlineInputBorder(borderSide: _bs);
+  static BorderRadius get _br => BorderRadius.circular(8);
+  static BorderSide get _bs => BorderSide.none;
+  static BorderSide get _err => BorderSide(color: Colors.pinkAccent, width: 1);
   static TextStyle get _textStyle => TextStyle(
         height: 1.8,
         fontSize: 16,
         color: Colors.indigo[900],
       );
-  static BorderSide get _bs => BorderSide.none;
-  static BorderSide get _err => BorderSide(color: Colors.pinkAccent, width: 1);
-  static OutlineInputBorder get _border => OutlineInputBorder(borderSide: _bs);
-  static BorderRadius get _br => BorderRadius.circular(8);
+  const PetLoversTheme._();
 }

@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 
 class LogoImage extends StatelessWidget {
   final double size;
@@ -11,8 +12,8 @@ class LogoImage extends StatelessWidget {
 
 // <a href="https://br.freepik.com/vetores/bebe">Bebê vetor criado por catalyststuff - br.freepik.com</a>
 class LogoPainter extends CustomPainter {
-  LogoPainter([this.color]);
   final Color? color;
+  LogoPainter([this.color]);
 
   @override
   paint(canvas, size) {

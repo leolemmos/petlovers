@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../theme/petlovers.theme.dart' show PetLoversTheme;
+
+import '../@theme/petlovers.theme.dart' show PetLoversTheme;
 
 class LogoType extends StatelessWidget {
   final double size;
